@@ -6,30 +6,32 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tic-Tac-Toe</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <script defer src="script.js"></script>
 
 </head>
 
 <body>
-  <h1>Tic-Tac-Toe</h1>
-  <!-- message to tell who's turn it is -->
+  <h1 class="heading-primary">Tic-Tac-Toe</h1>
   <div class="play-against-buttons">
     <div class="play-button button">AI</div>
     <div class="play-button button">2 Player</div>
   </div>
-  <div class="message" id="message"></div>
+  <div class="message" id="message">Player 1's turn!</div>
 
   <div class="container">
-    <div class="grid-cell" data-cell data-index="0"></div>
-    <div class="grid-cell" data-cell data-index="1"></div>
-    <div class="grid-cell" data-cell data-index="2"></div>
-    <div class="grid-cell" data-cell data-index="3"></div>
-    <div class="grid-cell" data-cell data-index="4"></div>
-    <div class="grid-cell" data-cell data-index="5"></div>
-    <div class="grid-cell" data-cell data-index="6"></div>
-    <div class="grid-cell" data-cell data-index="7"></div>
-    <div class="grid-cell" data-cell data-index="8"></div>
+    <div class="grid-cell" data-index="0"></div>
+    <div class="grid-cell" data-index="1"></div>
+    <div class="grid-cell" data-index="2"></div>
+    <div class="grid-cell" data-index="3"></div>
+    <div class="grid-cell" data-index="4"></div>
+    <div class="grid-cell" data-index="5"></div>
+    <div class="grid-cell" data-index="6"></div>
+    <div class="grid-cell" data-index="7"></div>
+    <div class="grid-cell" data-index="8"></div>
   </div>
 
   <div class="restart-button button" id="restart-button">Restart</div>

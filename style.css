@@ -13,10 +13,14 @@
 
 body {
   min-height: 100vh;
-  font-family: sans-serif;
+  font-family: "Nunito", sans-serif;
   font-size: 62.5%;
   display: grid;
   place-items: center;
+}
+
+.heading-primary {
+  font-size: 3.2rem;
 }
 
 /* play-against buttons */
@@ -67,6 +71,12 @@ body {
   cursor: pointer;
   border: 1px solid var(--black);
   border-radius: 5px;
+}
+
+/* Message */
+
+.message {
+  font-size: 2.4rem;
 }
 
 /* Game board */
