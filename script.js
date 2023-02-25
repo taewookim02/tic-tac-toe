@@ -41,6 +41,16 @@ const DisplayController = (() => {
     });
   };
 
+  // restart button handler
+  const _handleRestart = () => {
+    Game.resetGame();
+  };
+
+  // add event listener to restart button
+  document
+    .querySelector(".restart-button")
+    .addEventListener("click", _handleRestart);
+
   return { render, addEventListeners, updateMessage, removeEventListeners };
 })();
 
@@ -131,6 +141,29 @@ const Game = (() => {
     _isGameOver = true;
   };
 
+  // reset the game
+  const resetGame = () => {
+    // reset the board
+    Gameboard._board = new Array(9);
+
+    // reset the game state
+    _isGameOver = false;
+    _isWon = false;
+    _isTie = false;
+
+    // reset the current player
+    _currentPlayer = _player1;
+
+    // render the board
+    DisplayController.render();
+
+    // add event listeners to grid cells
+    DisplayController.addEventListeners();
+
+    // update message
+    DisplayController.updateMessage(`${_currentPlayer.mark}'s turn`);
+  };
+
   // function that initializes the game
   const startGame = () => {
     DisplayController.render();
@@ -138,7 +171,7 @@ const Game = (() => {
     DisplayController.updateMessage(`${_currentPlayer.mark}'s turn`);
   };
 
-  return { startGame, addMark };
+  return { startGame, addMark, resetGame };
 })();
 
 Game.startGame();
