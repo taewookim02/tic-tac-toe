@@ -19,6 +19,58 @@ body {
   place-items: center;
 }
 
+/* play-against buttons */
+
+.play-against-buttons {
+  display: flex;
+  gap: 3rem;
+}
+
+.play-button {
+  width: calc(60vh / 2 - 3.2rem);
+  height: 3.2rem;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  cursor: pointer;
+  border: 1px solid var(--black);
+  border-radius: 5px;
+}
+
+.button {
+  background-color: var(--black);
+  color: var(--white);
+  text-align: center;
+  cursor: pointer;
+  border: 1px solid var(--black);
+  border-radius: 5px;
+  font-size: 1.6rem;
+}
+
+.button:hover {
+  background-color: var(--light);
+}
+
+.button:active {
+  background-color: var(--darker);
+}
+
+/* choose role button */
+.choose-role-buttons {
+  display: flex;
+  gap: 5rem;
+}
+
+.role-button {
+  padding: 0.5rem 1.5rem;
+  text-align: center;
+  cursor: pointer;
+  border: 1px solid var(--black);
+  border-radius: 5px;
+}
+
+/* Game board */
+
 .container {
   background-color: var(--black);
   width: 60vh;
@@ -42,87 +94,18 @@ body {
   background-color: var(--light);
 }
 
-/* dialog modal */
-.dialog {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  display: none;
-  justify-content: center;
-  align-items: center;
-}
+/* Restart button */
 
-.dialog.active {
-  display: flex;
-}
-
-.dialog-content {
-  background-color: var(--black);
-  width: 40vh;
-  height: 40vh;
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: 1fr 1fr;
-  gap: 5px;
-  padding: 5px;
-}
-
-.dialog-content .dialog-header {
-  background-color: var(--white);
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr;
-  gap: 5px;
-  padding: 5px;
-}
-
-.dialog-content .dialog-header .dialog-title {
-  background-color: var(--white);
+.restart-button {
+  /* padding: 0.5rem 1.5rem; */
+  width: 60vh;
+  height: 3.2rem;
   display: grid;
   place-items: center;
-  font-size: 2.5rem;
-}
-
-.dialog-content .dialog-header .dialog-close {
-  background-color: var(--white);
-  display: grid;
-  place-items: center;
-  font-size: 2.5rem;
-}
-
-.dialog-content .dialog-header .dialog-close:hover {
+  text-align: center;
   cursor: pointer;
-  background-color: var(--light);
-}
-
-.dialog-content .dialog-body {
-  background-color: var(--white);
-  display: grid;
-  place-items: center;
-  font-size: 2.5rem;
-}
-
-.dialog-content .dialog-footer {
-  background-color: var(--white);
-  display: grid;
-  place-items: center;
-  font-size: 2.5rem;
-}
-
-.dialog-content .dialog-footer .dialog-btn {
-  background-color: var(--white);
-  display: grid;
-  place-items: center;
-  font-size: 2.5rem;
-  padding: 5px;
-}
-
-.dialog-content .dialog-footer .dialog-btn:hover {
-  cursor: pointer;
-  background-color: var(--light);
+  border: 1px solid var(--black);
+  border-radius: 5px;
 }
 
 /* media queries */
@@ -131,18 +114,28 @@ body {
     width: 40vh;
     height: 40vh;
   }
-}
 
-@media screen and (max-width: 480px) {
-  .container {
-    width: 30vh;
-    height: 30vh;
+  .restart-button {
+    width: 40vh;
+  }
+
+  .play-button {
+    width: calc(40vh / 2 - 3.2rem);
   }
 }
 
 @media screen and (max-width: 320px) {
   .container {
-    width: 20vh;
-    height: 20vh;
+    width: 30vh;
+    height: 30vh;
+  }
+
+  .restart-button {
+    width: 30vh;
+  }
+
+  .play-button {
+    width: calc(30vh / 2 - 3.2rem);
+    font-size: 1.4rem;
   }
 }

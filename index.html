@@ -8,11 +8,18 @@
   <title>Tic-Tac-Toe</title>
   <link rel="stylesheet" href="style.css">
   <script defer src="script.js"></script>
+
 </head>
 
 <body>
-  <!-- new game button -->
-  <button class="btn btn--primary" id="new-game">New Game</button>
+  <h1>Tic-Tac-Toe</h1>
+  <!-- message to tell who's turn it is -->
+  <div class="play-against-buttons">
+    <div class="play-button button">AI</div>
+    <div class="play-button button">2 Player</div>
+  </div>
+  <div class="message" id="message"></div>
+
   <div class="container">
     <div class="grid-cell" data-cell data-index="0"></div>
     <div class="grid-cell" data-cell data-index="1"></div>
@@ -25,28 +32,7 @@
     <div class="grid-cell" data-cell data-index="8"></div>
   </div>
 
-  <!-- dialog modal for entering player1, player2 name -->
-  <div class="dialog" id="dialog">
-    <div class="dialog__content">
-      <div class="dialog__header">
-        <h2 class="dialog__title">Enter Player Names</h2>
-      </div>
-      <div class="dialog__body">
-        <form action="" class="form">
-          <div class="form__group">
-            <label for="player1" class="form__label">Player 1</label>
-            <input type="text" class="form__input" id="player1" placeholder="Enter Player 1 Name">
-          </div>
-          <div class="form__group">
-            <label for="player2" class="form__label">Player 2</label>
-            <input type="text" class="form__input" id="player2" placeholder="Enter Player 2 Name">
-          </div>
-          <div class="form__group">
-            <button class="btn btn--primary" id="start">Start</button>
-          </div>
-        </form>
-      </div>
-    </div>
+  <div class="restart-button button" id="restart-button">Restart</div>
 </body>
 
 </html>
