@@ -72,10 +72,10 @@ const Game = (() => {
   const _switchPlayer = () => {
     // this doesn't work for tie
     if (_isWon) {
-      return DisplayController.updateMessage(`${_currentPlayer.mark} wins!`);
+      return DisplayController.updateMessage(`${_currentPlayer.mark} wins 🏆`);
     }
     if (_isTie) {
-      return DisplayController.updateMessage("It's a tie!");
+      return DisplayController.updateMessage("It's a tie 🤝");
     }
 
     _currentPlayer = _currentPlayer === _player1 ? _player2 : _player1;
@@ -104,9 +104,6 @@ const Game = (() => {
         Gameboard._board[combination[1]] === _currentPlayer.mark &&
         Gameboard._board[combination[2]] === _currentPlayer.mark
       ) {
-        // update message
-        DisplayController.updateMessage(`${_currentPlayer.mark} wins!`);
-
         // end the game
         _endGame();
         _isWon = true;
@@ -117,8 +114,6 @@ const Game = (() => {
   const _checkTie = () => {
     // check if there is a tie
     if (!Gameboard._board.includes(undefined)) {
-      // update message
-      DisplayController.updateMessage("It's a tie!");
       _endGame();
       _isTie = true;
     }
