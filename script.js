@@ -55,12 +55,19 @@ const Game = (() => {
   const _player2 = Players("Player 2", "O");
   let _currentPlayer = _player1;
   let _isGameOver = false;
+  let _isWon = false;
+  let _isTie = false;
 
   // private functions
   const _switchPlayer = () => {
-    if (_isGameOver) {
+    // this doesn't work for tie
+    if (_isWon) {
       return DisplayController.updateMessage(`${_currentPlayer.mark} wins!`);
     }
+    if (_isTie) {
+      return DisplayController.updateMessage("It's a tie!");
+    }
+
     _currentPlayer = _currentPlayer === _player1 ? _player2 : _player1;
 
     if (!_isGameOver) {
@@ -92,6 +99,7 @@ const Game = (() => {
 
         // end the game
         _endGame();
+        _isWon = true;
       }
     });
   };
@@ -102,6 +110,7 @@ const Game = (() => {
       // update message
       DisplayController.updateMessage("It's a tie!");
       _endGame();
+      _isTie = true;
     }
   };
 
