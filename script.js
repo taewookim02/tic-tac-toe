@@ -7,50 +7,91 @@ const Gameboard = (() => {
 const DisplayController = (() => {
   const _cells = document.querySelectorAll("[data-cell]");
 
-  const _handleCellClick = (e) => {
-    if (e.target.textContent) return;
-    if (main.currentPlayer.mark === "X") {
-      e.target.textContent = "X";
-      return (main.currentPlayer = main.player2);
-    } else {
-      e.target.textContent = "O";
-      return (main.currentPlayer = main.player1);
-    }
+  const updateCell = (index, mark) => {
+    _cells[index].textContent = mark;
   };
 
-  const loadBoard = () => {
+  const attachEventListenerToCells = (callback) => {
     _cells.forEach((val, i) => {
-      val.textContent = Gameboard._board[i];
+      val.addEventListener("click", callback);
     });
   };
 
-  const attachEventListenerToCells = () => {
-    _cells.forEach((val, i) => {
-      val.addEventListener("click", _handleCellClick);
-    });
-  };
-
-  return { loadBoard, attachEventListenerToCells };
+  return { updateCell, attachEventListenerToCells, _cells };
 })();
 
 const Players = (name, mark) => {
   return { name, mark };
 };
 
-const main = (() => {
-  DisplayController.attachEventListenerToCells();
-  const player1 = Players("John Doe", "X");
-  const player2 = Players("Alice Kwon", "O");
-  // player1 goes first
-  let currentPlayer = player1;
+const Game = (() => {
+  let _player1;
+  let _player2;
+  let _currentPlayer = _player1;
+  let _gameOver = false;
 
-  return { currentPlayer, player1, player2 };
+  // get player1 and player2 names from form
+  const _getNames = () => {
+    const form = document.querySelector(".form");
+    const player1Name = form.querySelector("#player1").value;
+    const player2Name = form.querySelector("#player2").value;
+    return { player1Name, player2Name };
+  };
+
+  const _checkForWinner = () => {
+    const winningCombos = [
+      // 8 winning combos
+      [0, 1, 2], // top row
+      [3, 4, 5], // middle row
+      [6, 7, 8], // bottom row
+      [0, 3, 6], // left column
+      [1, 4, 7], // middle column
+      [2, 5, 8], // right column
+      [0, 4, 8], // diagonal
+      [2, 4, 6], // diagonal
+    ];
+
+    const board = Gameboard._board;
+
+    winningCombos.forEach((combo) => {
+      if (
+        board[combo[0]] === board[combo[1]] &&
+        board[combo[1]] === board[combo[2]] &&
+        board[combo[0]] !== undefined
+      ) {
+        _gameOver = true;
+        return console.log(`${_currentPlayer.name} wins!`);
+      }
+    });
+  };
+
+  const _handleCellClick = (e) => {
+    if (_gameOver || e.target.textContent) return;
+
+    // update board
+    Gameboard._board[e.target.dataset.index] = _currentPlayer.mark;
+    DisplayController.updateCell(e.target.dataset.index, _currentPlayer.mark);
+
+    // check for winner
+    _checkForWinner();
+
+    // switch player
+    if (_currentPlayer === _player1) {
+      _currentPlayer = _player2;
+    } else {
+      _currentPlayer = _player1;
+    }
+  };
+
+  const startNewGame = (player1Name, player2Name) => {
+    _player1 = Players(player1Name, "X");
+    _player2 = Players(player2Name, "O");
+    _currentPlayer = _player1;
+    _gameOver = false;
+    DisplayController.attachEventListenerToCells(_handleCellClick);
+  };
+
+  return { startNewGame };
 })();
 
-// For the sake of developing the logic and have some progress, I am going to start with X
-
-// Build the functions that allow players to add marks to a specific spot on the board
-
-// Let players click on the gameboard to place marker
-
-// Logic should block players playing taken spots
+Game.startNewGame("Player 1", "Player 2");

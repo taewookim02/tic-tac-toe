@@ -41,3 +41,108 @@ body {
   cursor: pointer;
   background-color: var(--light);
 }
+
+/* dialog modal */
+.dialog {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+.dialog.active {
+  display: flex;
+}
+
+.dialog-content {
+  background-color: var(--black);
+  width: 40vh;
+  height: 40vh;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 5px;
+  padding: 5px;
+}
+
+.dialog-content .dialog-header {
+  background-color: var(--white);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+  gap: 5px;
+  padding: 5px;
+}
+
+.dialog-content .dialog-header .dialog-title {
+  background-color: var(--white);
+  display: grid;
+  place-items: center;
+  font-size: 2.5rem;
+}
+
+.dialog-content .dialog-header .dialog-close {
+  background-color: var(--white);
+  display: grid;
+  place-items: center;
+  font-size: 2.5rem;
+}
+
+.dialog-content .dialog-header .dialog-close:hover {
+  cursor: pointer;
+  background-color: var(--light);
+}
+
+.dialog-content .dialog-body {
+  background-color: var(--white);
+  display: grid;
+  place-items: center;
+  font-size: 2.5rem;
+}
+
+.dialog-content .dialog-footer {
+  background-color: var(--white);
+  display: grid;
+  place-items: center;
+  font-size: 2.5rem;
+}
+
+.dialog-content .dialog-footer .dialog-btn {
+  background-color: var(--white);
+  display: grid;
+  place-items: center;
+  font-size: 2.5rem;
+  padding: 5px;
+}
+
+.dialog-content .dialog-footer .dialog-btn:hover {
+  cursor: pointer;
+  background-color: var(--light);
+}
+
+/* media queries */
+@media screen and (max-width: 768px) {
+  .container {
+    width: 40vh;
+    height: 40vh;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .container {
+    width: 30vh;
+    height: 30vh;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .container {
+    width: 20vh;
+    height: 20vh;
+  }
+}
